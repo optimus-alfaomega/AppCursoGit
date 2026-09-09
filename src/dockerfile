@@ -1,0 +1,13 @@
+# Etapa 1: compilar el código Java
+FROM eclipse-temurin:21-jdk-alpine AS build
+WORKDIR /app
+COPY EjemploBasico.java .
+RUN javac EjemploBasico.java
+ 
+# Etapa 2: imagen final, más liviana, solo con el JRE (no el JDK completo)
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+COPY --from=build /app/EjemploBasico.class .
+ 
+# Comando que se ejecuta al iniciar el contenedor
+CMD ["java", "EjemploBasico"]
