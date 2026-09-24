@@ -32,4 +32,8 @@ public class EjemploBasico {
     public static int sumar(int a, int b) {
         return a + b;
     }
+     public static int multiplica (){
+        return 20 * 20;
+    }
+
 }
